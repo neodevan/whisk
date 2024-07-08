@@ -11,7 +11,7 @@ import com.whisk.testutil.TestUtils;
 import com.whisk.utils.ApiUtils;
 import com.whisk.utils.BrowserFactory;
 import com.whisk.utils.TestDataReader;
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
@@ -36,8 +36,8 @@ public class BaseTest {
     public void setup (){
         ApiUtils.setBaseURI();
         driver = BrowserFactory.InitBrowser("Chrome");
-        driver.get(BaseWebURL);
-        whiskSignUpPage = new WhiskSignUpPage(driver);
+      //  driver.get(BaseWebURL);
+      //  whiskSignUpPage = new WhiskSignUpPage(driver);
     }
 
 

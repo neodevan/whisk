@@ -17,7 +17,7 @@ public class ObjectRepoUtility {
 
 	public ObjectRepoUtility(WebDriver driver) {
 		this.driver = driver;
-		wait = new FluentWait<WebDriver>(this.driver).withTimeout(timeout, TimeUnit.SECONDS).pollingEvery(polling,TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class).ignoring(NoSuchElementException.class).ignoring(UnknownError.class);
+		wait = new FluentWait<WebDriver>(this.driver).withTimeout(Duration.ofSeconds(timeout)).pollingEvery(Duration.ofSeconds(polling)).ignoring(StaleElementReferenceException.class).ignoring(NoSuchElementException.class).ignoring(UnknownError.class);
 	}
 
 	public void getURL(String baseURL) {

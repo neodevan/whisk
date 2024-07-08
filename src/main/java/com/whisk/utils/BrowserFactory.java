@@ -1,6 +1,7 @@
 package com.whisk.utils;
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,50 +15,34 @@ public class BrowserFactory {
     
 
 
-     public static WebDriver InitBrowser(String browserName)
-     {
-    	 WebDriver driver=null;
-    	 String userDirectory=System.getProperty("user.dir");
-         try
-         {
-             switch (browserName)
-             {
+     public static WebDriver InitBrowser(String browserName) {
+         WebDriver driver = null;
+         try {
+             switch (browserName) {
 
                  case "Firefox":
-                    
-                    	 String geckopath=userDirectory+"\\Gecko\\";
-                         FirefoxOptions Firefoxoptions = new FirefoxOptions();
-                         Firefoxoptions.addArguments("--start-maximized");
-                         System.setProperty("webdriver.gecko.driver", geckopath+"geckodriver.exe");
-                         driver = new FirefoxDriver(Firefoxoptions);
-                     break;
 
-                 case "IE":
-                        driver = new InternetExplorerDriver();
-                     
-                     break;
+                     WebDriverManager.firefoxdriver().setup();
+                     FirefoxOptions Firefoxoptions = new FirefoxOptions();
+                     Firefoxoptions.addArguments("--start-maximized");
+                     driver = new FirefoxDriver(Firefoxoptions);
+                     return driver;
 
                  case "Chrome":
-                         
-                    	 String chromePath=userDirectory+"\\Chrome\\";
-                         ChromeOptions options = new ChromeOptions();
-                         options.addArguments("--start-maximized");
-                         System.setProperty("webdriver.chrome.driver", chromePath+"chromedriver.exe");
-                         driver = new ChromeDriver(options);
-                     
-                     break;
-                     
-             }
-             
-             return driver;
-         }
-         catch(Exception e)
-         {
 
-        	 return null;
+                     WebDriverManager.chromedriver().clearDriverCache().setup();
+                     driver = new ChromeDriver();
+                     return driver;
+
+             }
+             return null;
+         } catch (Exception e) {
+
+             return null;
          }
-         
      }
+         
+
 
      
 }
