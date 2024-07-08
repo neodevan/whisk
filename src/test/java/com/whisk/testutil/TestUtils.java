@@ -1,8 +1,8 @@
 package com.whisk.testutil;
 
-import com.jayway.restassured.path.json.JsonPath;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.response.ResponseBody;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 
 import org.testng.Assert;
 import java.util.UUID;

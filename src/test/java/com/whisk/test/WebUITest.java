@@ -11,7 +11,7 @@ public class WebUITest extends BaseTest {
 
 	String shoppingListName = "";
 
-    @Test()
+    @Test(priority = 1)
     public void verifyUserIsAbleToAddItemsToShoppingList() {
            whiskSignUpPage.textBoxUsername("username").sendKeys(TestUtils.generategmailId());
 		   whiskSignUpPage.buttonContinue("Continue").click();
@@ -34,6 +34,13 @@ public class WebUITest extends BaseTest {
 		   whiskShoppingPage.divNameContainsText(shoppingListName).click();
 
     }
+
+
+	@Test()
+	public void seleniumTraining() {
+		driver.get("https://www.heroku.com/");
+
+	}
 
 	 @Test(dataProvider="TestData",dependsOnMethods = "verifyUserIsAbleToAddItemsToShoppingList", priority = 1)
 	    public void verifyItemsAddedToShoppingList(String item) {
